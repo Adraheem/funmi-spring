@@ -1,19 +1,20 @@
 package controller;
 
-import data.model.User;
-import data.repository.UserRepositoryInterface;
+import dtos.requests.LoginRequestDTO;
+import dtos.requests.RegisterRequestDTO;
+import dtos.responses.UserDTO;
 import services.UserService;
 import services.UserServiceImpl;
 
 public class UserController {
     private final UserService userService = new UserServiceImpl();
 
-    public User register(String firstName, String lastName, String email, String password, String phoneNumber){
-        return userService.createUser(firstName, lastName, email, password, phoneNumber);
+    public UserDTO register(RegisterRequestDTO registerRequestDTO){
+        return userService.createUser(registerRequestDTO);
     }
 
-    public User login(String email, String password){
-        return userService.loginUser(email, password);
+    public UserDTO login(LoginRequestDTO loginRequestDTO){
+        return userService.loginUser(loginRequestDTO);
     }
 
     public String delete(String email, String password){

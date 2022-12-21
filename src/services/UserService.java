@@ -1,11 +1,13 @@
 package services;
 
-import data.model.User;
+import dtos.requests.LoginRequestDTO;
+import dtos.requests.RegisterRequestDTO;
+import dtos.responses.UserDTO;
 
 public interface UserService {
-    User createUser(String firstName, String lastName, String email, String password, String phoneNumber);
+    UserDTO createUser(RegisterRequestDTO registerRequestDTO);
 
-    User loginUser(String email, String password);
+    UserDTO loginUser(LoginRequestDTO loginRequestDTO);
 
     void deleteUser(String email, String password);
 }
