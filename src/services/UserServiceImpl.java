@@ -40,8 +40,9 @@ public class UserServiceImpl implements UserService, UserRepositoryInterface {
 
         User user = validateUser(loginRequestDTO.getEmail(), loginRequestDTO.getPassword());
 
+        if (user == null) throw new IllegalArgumentException("Incorrect old password");
+
         UserDTO res = new UserDTO();
-        assert user != null;
         res.setFirstName(user.getFirstName());
         res.setLastName(user.getLastName());
         res.setEmail(user.getEmail());
