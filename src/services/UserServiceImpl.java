@@ -2,14 +2,14 @@ package services;
 
 import data.model.User;
 import data.repository.UserRepository;
-import data.repository.UserRepositoryInterface;
 import dtos.requests.LoginRequestDTO;
 import dtos.requests.RegisterRequestDTO;
 import dtos.requests.ResetPasswordRequestDTO;
 import dtos.requests.UpdateUserRequestDTO;
 import dtos.responses.UserDTO;
+import exception.SignupSignInException;
 
-public class UserServiceImpl implements UserService, UserRepositoryInterface {
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository = new UserRepository();
 
@@ -34,9 +34,9 @@ public class UserServiceImpl implements UserService, UserRepositoryInterface {
     }
 
     @Override
-    public UserDTO loginUser(LoginRequestDTO loginRequestDTO) {
+    public UserDTO loginUser(LoginRequestDTO loginRequestDTO) throws SignupSignInException {
         if(!loginRequestDTO.getPassword().equals(loginRequestDTO.getConfirmPassword()))
-            throw new IllegalArgumentException("Password not matching");
+            throw new SignupSignInException("Password not matching");
 
         User user = validateUser(loginRequestDTO.getEmail(), loginRequestDTO.getPassword());
 
@@ -52,9 +52,9 @@ public class UserServiceImpl implements UserService, UserRepositoryInterface {
     @Override
     public UserDTO updateUser(UpdateUserRequestDTO updateUserRequestDTO) {
         User user = userRepository.findByKey(updateUserRequestDTO.getEmail());
-        user.setFirstName(updateUserRequestDTO.getFirstName());
-        user.setLastName(updateUserRequestDTO.getLastName());
-        user.setPhoneNumber(updateUserRequestDTO.getPhoneNumber());
+        if (updateUserRequestDTO.getFirstName() != null) user.setFirstName(updateUserRequestDTO.getFirstName());
+        if (updateUserRequestDTO.getLastName() != null) user.setLastName(updateUserRequestDTO.getLastName());
+        if (updateUserRequestDTO.getPhoneNumber() != null) user.setPhoneNumber(updateUserRequestDTO.getPhoneNumber());
         User savedUser = userRepository.save(user);
 
         UserDTO res = new UserDTO();
@@ -71,9 +71,9 @@ public class UserServiceImpl implements UserService, UserRepositoryInterface {
     }
 
     @Override
-    public void resetPassword(ResetPasswordRequestDTO resetPasswordRequestDTO) {
+    public void resetPassword(ResetPasswordRequestDTO resetPasswordRequestDTO) throws SignupSignInException {
         User user = validateUser(resetPasswordRequestDTO.getEmail(), resetPasswordRequestDTO.getOldPassword());
-        if (user == null) throw new IllegalArgumentException("Incorrect old password");
+        if (user == null) throw new SignupSignInException("Incorrect old password");
 
         user.setPassword(resetPasswordRequestDTO.getNewPassword());
         userRepository.save(user);
