@@ -2,6 +2,8 @@ package controller;
 
 import dtos.requests.LoginRequestDTO;
 import dtos.requests.RegisterRequestDTO;
+import dtos.requests.ResetPasswordRequestDTO;
+import dtos.requests.UpdateUserRequestDTO;
 import dtos.responses.UserDTO;
 import services.UserService;
 import services.UserServiceImpl;
@@ -19,6 +21,15 @@ public class UserController {
 
     public String delete(String email, String password){
         userService.deleteUser(email, password);
+        return "Successful";
+    }
+
+    public UserDTO update(UpdateUserRequestDTO updateUserRequestDTO){
+        return userService.updateUser(updateUserRequestDTO);
+    }
+
+    public String resetPassword(ResetPasswordRequestDTO resetPasswordRequestDTO){
+        userService.resetPassword(resetPasswordRequestDTO);
         return "Successful";
     }
 }

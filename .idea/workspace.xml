@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="82ab0616-4cc8-4577-a8cf-7b2fefc69ff7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/dtos/requests/LoginRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dtos/requests/RegisterRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dtos/responses/UserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dtos/requests/ResetPasswordRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dtos/requests/UpdateUserRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtos/requests/LoginRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtos/requests/LoginRequestDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/UserServiceImpl.java" afterDir="false" />
     </list>
@@ -64,7 +65,8 @@
       <option name="presentableId" value="Default" />
       <updated>1671462030776</updated>
       <workItem from="1671462032958" duration="9875000" />
-      <workItem from="1671622728895" duration="11202000" />
+      <workItem from="1671622728895" duration="11994000" />
+      <workItem from="1671706506262" duration="2611000" />
     </task>
     <servers />
   </component>
@@ -76,7 +78,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
